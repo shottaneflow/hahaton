@@ -23,6 +23,8 @@ public class Grade extends BaseEntity {
 
     private String comment;
 
+    private Boolean isAnonim;
+
     @ManyToOne
     @JoinColumn(name="teacher_id")
     private Teacher teacher;
