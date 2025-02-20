@@ -3,6 +3,7 @@ package org.example.hahaton.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +12,11 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "custom-UUID")
+    @GenericGenerator(
+            name = "custom-UUID",
+            strategy = "org.example.hahaton.generator.UUIDGenerator"
+    )
     private String id;
 
     @Column(name="created_at",updatable=false)

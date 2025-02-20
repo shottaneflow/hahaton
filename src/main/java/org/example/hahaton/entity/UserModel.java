@@ -3,11 +3,12 @@ package org.example.hahaton.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
-public class User extends BaseEntity {
+public class UserModel extends BaseEntity {
 
     private String username;
     private String password;
@@ -17,12 +18,20 @@ public class User extends BaseEntity {
     private String activationCode;
     private boolean active;
 
+    public UserModel() {
+        this.authorities = new ArrayList<>();
+    }
+
     @ManyToMany
     @JoinTable(name="user_authority",
             joinColumns = @JoinColumn(name="id_user"),
             inverseJoinColumns = @JoinColumn(name="id_authority"))
     private List<Authority> authorities;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "userModel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Grade> grades;
+
+    public void addAuthorities(Authority authority) {
+        this.authorities.add(authority);
+    }
 }
