@@ -30,11 +30,11 @@ public class Grade extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name="teacher_id")
-    @JsonBackReference
+    @JsonBackReference(value = "teacher-grades")
     private Teacher teacher;
 
     @ManyToOne
     @JoinColumn(name="user_id")
-    @JsonBackReference
+    @JsonBackReference(value = "user-grades")
     private UserModel userModel;
 }

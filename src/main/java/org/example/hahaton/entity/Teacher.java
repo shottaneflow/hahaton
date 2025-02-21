@@ -23,7 +23,7 @@ public class Teacher extends BaseEntity {
     private Integer baseRatesCount;
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "teacher-grades")
     private List<Grade> grades;
 
 }

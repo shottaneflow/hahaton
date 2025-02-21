@@ -30,7 +30,7 @@ public class UserModel extends BaseEntity {
     private List<Authority> authorities;
 
     @OneToMany(mappedBy = "userModel", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonManagedReference(value = "user-grades")
     private List<Grade> grades;
 
     public void addAuthorities(Authority authority) {
