@@ -1,5 +1,6 @@
 package org.example.hahaton.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -29,6 +30,7 @@ public class UserModel extends BaseEntity {
     private List<Authority> authorities;
 
     @OneToMany(mappedBy = "userModel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Grade> grades;
 
     public void addAuthorities(Authority authority) {

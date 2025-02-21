@@ -2,6 +2,7 @@ package org.example.hahaton.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -22,6 +23,7 @@ public class Teacher extends BaseEntity {
     private Integer baseRatesCount;
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Grade> grades;
 
 }

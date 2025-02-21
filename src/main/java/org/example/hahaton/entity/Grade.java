@@ -1,5 +1,6 @@
 package org.example.hahaton.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -25,11 +26,15 @@ public class Grade extends BaseEntity {
 
     private Boolean isAnonim;
 
+    private Boolean isModerated;
+
     @ManyToOne
     @JoinColumn(name="teacher_id")
+    @JsonBackReference
     private Teacher teacher;
 
     @ManyToOne
     @JoinColumn(name="user_id")
+    @JsonBackReference
     private UserModel userModel;
 }

@@ -43,8 +43,8 @@ public class SecurityBeans {
 
                         .requestMatchers("/auth-api/**").permitAll()
                         .requestMatchers("/reg-api/**").permitAll()
-                        .requestMatchers("/welcome-page-api/**").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/user-api/**").permitAll()
+                        .requestMatchers("/admin-api/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
 
 
